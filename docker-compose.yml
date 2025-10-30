@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  platform-rl:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./models:/app/models
+      - ./logs:/app/logs
+    environment:
+      - PYTHONUNBUFFERED=1
+    command: python train.py --agent_name "DockerAgent" --environment "kindest" --episodes 100
